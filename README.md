@@ -30,7 +30,7 @@ gcloud iam service-accounts create <NAME> --project <PROJECT_ID>
 Grant permissions. Specify a name for the service account and use the the project id from before. Notice we are adding the `bigquery.dataViewer` and `bigquery.user` roles (feel free to add any additional roles you need):
 
 ```sh
-gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:<NAME>@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/bigquery.dataViewer/bigquery.user"
+gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:<NAME>@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/bigquery.dataViewer" --role="roles/bigquery.user"
 ```
 
 Generate the key file:
