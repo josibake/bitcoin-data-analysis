@@ -16,26 +16,24 @@ These instructions assume you already have a google cloud account and `gcloud` s
 
 ### Create a new project
 
-The following command creates a project under your account with the given name (feel free to choose your own). This will prompt you to accept the generated ID. Make sure to copy the ID as this is what you will use for `<PROJECT_ID>` for the remaining commands.
+The following command creates a project under your account. This will prompt you to accept the generated ID. Make sure to copy the ID as this is what you will use for `<PROJECT_ID>` for the remaining commands.
 
 ```sh
-gcloud projects create --name="Bitcoin data analysis"
+gcloud projects create --name="<NAME>"
 ```
 
 ### Authentication
 
-There are multiple ways you can authenticate, but the simplest is to create a service account, attach it to your project, and then copy the keys locally.
-
-Create the service account under the project you created before:
+There are multiple ways you can authenticate, but the simplest is to create a service account, attach it to your project, and then copy the keys locally. Create the service account using the project id from above:
 
 ```sh
 gcloud iam service-accounts create <NAME> --project <PROJECT_ID>
 ```
 
-Grant permissions. Specify a name for the service account and use the the project id from before. Notice we are adding the `bigquery.dataViewer` and `bigquery.user` roles (feel free to add any additional roles you need):
+Grant permissions on the service account. Notice we are adding the `bigquery.dataViewer` and `bigquery.user` roles (feel free to add any additional roles you need):
 
 ```sh
-gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:<NAME>@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/bigquery.dataViewer/bigquery.user"
+gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:<NAME>@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/bigquery.dataViewer" --role="roles/bigquery.user"
 ```
 
 Generate the key file:
