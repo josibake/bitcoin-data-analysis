@@ -1,6 +1,6 @@
 # Bitcoin Data Analysis
 
-A repo containing notebooks and scripts for analyzing the bitcoin blockchain. This repo analyzes data from the BigQuery public dataset published by google. For more info about the datasets and how they are published, check out:
+A repo containing notebooks and scripts for analyzing the bitcoin blockchain. This repo analyzes data from the BigQuery public dataset published by google. You can query the data directly from the BigQuery UI [here](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_bitcoin&page=dataset) For more info about the datasets and how they are published, check out:
 
 * [BigQuery cryptocurrency public datasets](https://cloud.google.com/blog/products/data-analytics/introducing-six-new-cryptocurrencies-in-bigquery-public-datasets-and-how-to-analyze-them)
 * [github.com/blockchain-etl](https://github.com/blockchain-etl)
