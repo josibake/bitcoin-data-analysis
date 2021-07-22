@@ -83,7 +83,7 @@ In your R session, you can access BigQuery and DBI like so:
 library(bigrquery)
 library(DBI)
 
-project_id <- "<PROJEC_ID">
+project_id <- "<PROJEC_ID>"
 
 con <- dbConnect(
   bigrquery::bigquery(),
