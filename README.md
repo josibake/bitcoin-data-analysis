@@ -7,7 +7,12 @@ A repo containing notebooks and scripts for analyzing the bitcoin blockchain. Th
 
 ## Setup
 
-These instructions assume you already have `gcloud` setup. If not, you can follow installation instructions [here](https://cloud.google.com/sdk/docs/install). Alternatively, you can do all of these steps from the google console, but only the `gcloud` commands are provided here for brevity.
+These instructions assume you already have a google cloud account and `gcloud` setup. If not, you can sign up for a free account with $300 in credits at [https://cloud.google.com/free/docs/gcp-free-tier](https://cloud.google.com/free/docs/gcp-free-tier). You can also follow installation instructions for `gcloud` [here](https://cloud.google.com/sdk/docs/install). Alternatively, you can do all of these steps from the google console. The basic steps are:
+
+1. Create a new project
+2. Create a service account in that project
+3. Add the correct roles to the service account
+4. Download the keys to your local computer
 
 ### Create a new project
 
@@ -67,4 +72,31 @@ This stores the results of the query in a dataframe called `df_name`. For more e
 
 ### Using R
 
-tbd
+Using R is a bit easier to setup due to the excellent `bigrquery` package. To use, install the following packages:
+
+```R
+install.packages("bigrquery")
+install.packages("httpuv")
+```
+
+In your R session, you can access BigQuery and DBI like so:
+
+```R
+library(bigrquery)
+library(DBI)
+
+project_id <- "<PROJEC_ID">
+
+con <- dbConnect(
+  bigrquery::bigquery(),
+  project = "bitcoin-data-analysis",
+  dataset = "crypto_bitcoin",
+  billing = project_id
+)
+
+sql <- "SELECT `hash`, fee FROM `bigquery-public-data.crypto_bitcoin.transactions` LIMIT 10"
+
+dbGetQuery(con, sql, n = 10)
+```
+
+This will prompt you to authenticate on the first query, which will open a browser page for you to authenticate R to use your google account
