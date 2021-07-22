@@ -97,4 +97,4 @@ sql <- "SELECT `hash`, fee FROM `bigquery-public-data.crypto_bitcoin.transaction
 dbGetQuery(con, sql, n = 10)
 ```
 
-This will prompt you to authenticate on the first query, which will open a browser page for you to authenticate R to use your google account
+This will prompt you to authenticate on the first query, which will open a browser page for you to authenticate R to use your google account. This caches a token, so you will not need to re-authenticate on your next session. For more info on `bigrquery` and examples on using with `dplyr`, check out the repo: [https://github.com/r-dbi/bigrquery](https://github.com/r-dbi/bigrquery)
